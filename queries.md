@@ -60,6 +60,7 @@ query: {category_code: {$eq: null}}
 **7. Order all the companies by their IPO price in a descending order.**
 
 ```shell
+query: {}
 sort: {"ipo.valuation_amount": -1}
 ```
 
@@ -68,6 +69,7 @@ sort: {"ipo.valuation_amount": -1}
 **8. Retrieve the 10 companies with most employees, order by the `number of employees`.**
 
 ```shell
+query: {}
 sort: {number_of_employees: -1}
 limit: 10
 ```
@@ -135,5 +137,5 @@ query: {$and: [{"acquisition.price_currency_code": "EUR"},{"acquisition.price_am
 **5. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.**
 
 ```shell
-query: {$and: [{founded_year: {$gt: 2000}},{founded_year: {$lt: 2010}}, {$or: [{"acquisition.acquired_year": {$gte: 2011}},{"acquisition.acquired_year":{$eq:null}}]}]}
+query: {$and: [{founded_year: {$gte: 2000}},{founded_year: {$lte: 2010}}, {$or: [{"acquisition.acquired_year": {$gte: 2011}},{"acquisition.acquired_year":{$eq:null}}]}]}
 ```
